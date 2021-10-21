@@ -31,8 +31,8 @@ readline.question(menu, function(input) {
                             return console.log("Please run this application as administrator")
                         } else {
                             console.log(`(${device}) - TCP ( ${ip} ) Has been Blocked `)
-							fs.appendFileSync("logs" , `Blocked - ${ip}`);
-							return
+                            fs.appendFileSync("./logs/logs.txt", `Blocked - ${ip}`);
+                            return
                         }
                     });
                 })
@@ -47,7 +47,7 @@ readline.question(menu, function(input) {
                         } else {
                             exec(`iptables-save`)
                             console.log(`(${device}) - TCP ( ${ip} ) Has been Blocked `)
-							fs.appendFileSync("logs" , `Blocked - ${ip}`);
+                            fs.appendFileSync("./logs/logs.txt", `Blocked - ${ip}`);
                         }
                     });
                 })
@@ -61,7 +61,7 @@ readline.question(menu, function(input) {
                             return console.log("Please run this application as root")
                         } else {
                             console.log(`(${device}) - TCP ( ${ip} ) Has been blocked`)
-							fs.appendFileSync("logs" , `Blocked - ${ip}`);
+                            fs.appendFileSync("./logs/logs.txt", `Blocked - ${ip}`);
                         }
                     });
                 });
@@ -79,6 +79,7 @@ readline.question(menu, function(input) {
                             return console.log("Please run this application as administrator");
                         } else {
                             console.log(`(${device}) - TCP ( ${ip} ) Has been Blocked `);
+                            fs.appendFileSync("./logs/logs.txt", `unBlocked - ${ip}`);
                         }
                     });
                 })
@@ -92,7 +93,9 @@ readline.question(menu, function(input) {
                             return console.log("Please run this application as root");
                         } else {
                             exec(`iptables-save`)
-                            console.log(`(${device}) - TCP ( ${ip} ) Has been Blocked `);
+                            console.log(`(${device}) - TCP ( ${ip} ) Has been unBlocked `);
+                            fs.appendFileSync("./logs/logs.txt", `unBlocked - ${ip}`);
+                            return
                         }
                     });
                 })
@@ -105,7 +108,8 @@ readline.question(menu, function(input) {
                         if (error) {
                             return console.log("Please run this application as root");
                         } else {
-                            console.log(`(${device}) - TCP ( ${ip} ) Has been blocked`);
+                            console.log(`(${device}) - TCP ( ${ip} ) Has been unBlocked`);
+                            fs.appendFileSync("./logs/logs.txt", `unBlocked - ${ip}`);
                         }
                     });
                 });
